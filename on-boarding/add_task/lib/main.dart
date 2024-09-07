@@ -1,3 +1,4 @@
+import 'package:add_task/todo_list.dart';
 import 'package:flutter/material.dart';
 
 import 'create_task.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFEE6F57)),
         useMaterial3: true,
       ),
-      home: const CreateTask(), //change to MyHomePage() for home page  until routing will be done
+      home: TodoList(), //change to MyHomePage() for home page  until routing will be done
     );
   }
 }
