@@ -1,4 +1,3 @@
-import 'package:add_task/task_model.dart';
 import 'package:flutter/material.dart';
 
 class TaskDetail extends StatelessWidget {
@@ -71,7 +70,8 @@ class TaskDetail extends StatelessWidget {
           style: const TextStyle(
               fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
         ),
-                const Padding(
+        const SizedBox(height: 10),
+        const Padding(
           padding: EdgeInsets.all(10.0),
           child: Text(
             'Deadline',
