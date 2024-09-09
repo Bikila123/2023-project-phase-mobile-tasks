@@ -20,9 +20,6 @@ here is a preview of the UI for the app
 
 ![get_started](https://github.com/user-attachments/assets/e4e10762-ad2c-464d-af2d-10950f7dc557) 
 ![create_task](https://github.com/user-attachments/assets/456e8b6f-040b-4416-8d4c-d956ae158cb7)
-## Todo List UI Design
-![todolist](https://github.com/user-attachments/assets/a946dc4f-315b-40db-844b-a9b42f8648f4)
-## Task Detail UI Design
-![task_details](https://github.com/user-attachments/assets/9bd009d6-42f4-405c-8160-4d9574742510)
+
 
 
