@@ -1,7 +1,6 @@
+import 'package:add_task/task_detail.dart';
 import 'package:add_task/todo_list.dart';
 import 'package:flutter/material.dart';
-
-import 'create_task.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,11 +14,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFEE6F57)),
         useMaterial3: true,
       ),
-      home: TodoList(), //change to MyHomePage() for home page  until routing will be done
+      home: TaskDetail(), //change to MyHomePage() for home page  until routing will be done
     );
   }
 }
@@ -29,10 +29,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      //   title: Text(widget.title),
-      // ),
+      
       backgroundColor: const Color(0xFFEE6F57),
       body: Center(
           child: Column(
