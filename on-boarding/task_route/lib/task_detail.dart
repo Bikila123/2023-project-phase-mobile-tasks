@@ -1,6 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:task_route/main.dart';
 import 'package:task_route/task_model.dart';
 
 class TaskDetail extends StatefulWidget {
@@ -189,8 +189,10 @@ class _TaskDetailState extends State<TaskDetail> {
                 dateText: _dueDateController.text,
                 taskColor: Colors.green,
                 title: _titleController.text);
-            MyHomePageState myHomePageState = MyHomePageState();
-            myHomePageState.addTask(task); //update code could be replaced
+                if (kDebugMode) {
+                  print(task);
+                }
+              //update code will be here by using the updated data
             Navigator.pushNamed(context, '/');
           },
           style: ElevatedButton.styleFrom(

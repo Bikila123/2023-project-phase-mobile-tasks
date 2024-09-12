@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:task_route/task_detail.dart';
 
 class FadePageRoute<T> extends PageRouteBuilder<T> {
   final Widget page;

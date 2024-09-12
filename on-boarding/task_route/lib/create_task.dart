@@ -1,6 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:task_route/main.dart';
 import 'package:task_route/task_model.dart';
 
 class CreateTask extends StatefulWidget {
@@ -179,8 +179,10 @@ class _CreateTaskState extends State<CreateTask> {
                 dateText: _dueDateController.text,
                 taskColor: Colors.green,
                 title: _titleController.text);
-            MyHomePageState myHomePageState = MyHomePageState();
-            myHomePageState.addTask(task);  //write now this is not adding to the list in the home page 
+                if (kDebugMode) {
+                  print(task);
+                }
+            // new task creation that will be persistent could be written here
             Navigator.pushNamed(context, '/');
           },
           style: ElevatedButton.styleFrom(
