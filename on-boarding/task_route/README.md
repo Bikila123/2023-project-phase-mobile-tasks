@@ -15,7 +15,7 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-##App's functionality
+## App's functionality
 
 1. Screen Navigation
 -The Task Route app features three screens: the home page, which displays the to-do list; the create task screen, where users can add a task with a title, description, and deadline; and the task detail screen, which shows the selected task from the home page and includes an edit option.
@@ -30,3 +30,9 @@ samples, guidance on mobile development, and a full API reference.
 -A fade page route has been implemented to enhance the app's user experience, and the back arrow on both the task detail and create task screens navigates the user back to the home page when clicked.
 
 ## Demo
+https://github.com/user-attachments/assets/09f91b5c-540a-4035-bc43-0214afe3a047
+
+
+
+
+
