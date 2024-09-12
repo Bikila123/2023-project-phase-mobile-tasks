@@ -26,7 +26,7 @@ samples, guidance on mobile development, and a full API reference.
 3. Passing Data Between Screens
 - In this app, when the user clicks on a task from the to-do list page, the details of that task are displayed on the task detail page.
 
-5. Navigation Animation 
+4. Navigation Animation 
 - A fade page route has been implemented to enhance the app's user experience, and the back arrow on both the task detail and create task screens navigates the user back to the home page when clicked.
 
 ## Demo
