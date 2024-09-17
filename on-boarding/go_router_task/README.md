@@ -30,7 +30,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ## How to Run
 1. Clone Repository 
-   git clone https://github.com/Bikila123/2023-project-phase-mobile-tasks/tree/master/on-boarding/go_router_task
+   - git clone https://github.com/Bikila123/2023-project-phase-mobile-tasks/tree/master/on-boarding/go_router_task
 2. Run the app on IDE
 - home page will be showed on your first run of the app with todo list 
 3. Task Detail
@@ -43,4 +43,4 @@ samples, guidance on mobile development, and a full API reference.
 - fill the form and click "Add Task" button that will redirect you to home page
 - click arrow back on the top of the page to go back to home page
 
-   #go enjoy your app!
+   # go enjoy your app!
