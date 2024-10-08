@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:go_router_task/task_model.dart';
 import 'package:intl/intl.dart';
 
 class CreateTask extends StatefulWidget {
@@ -174,14 +173,14 @@ class _CreateTaskState extends State<CreateTask> {
       children: [
         ElevatedButton(
           onPressed: () {
-            Task task = Task(
-                iconText: _titleController.text[1],
-                taskDescription: _descriptionController.text,
-                dateText: _dueDateController.text,
-                taskColor: Colors.green,
-                title: _titleController.text);
+            // TaskEntity task = TaskEntity(
+            //     iconText: _titleController.text[1],
+            //     taskDescription: _descriptionController.text,
+            //     dateText: _dueDateController.text,
+            //     taskColor: Colors.green,
+            //     title: _titleController.text);
                 if (kDebugMode) {
-                  print(task);
+                  // print(task);
                 }
             // new task creation that will be persistent could be written here
             context.goNamed("home");

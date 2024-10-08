@@ -43,4 +43,9 @@ samples, guidance on mobile development, and a full API reference.
 - fill the form and click "Add Task" button that will redirect you to home page
 - click arrow back on the top of the page to go back to home page
 
+ ## Clean Architecture
+- assets/todo_data.json used as list of existing tasks 
+- task details page updated with is completed checkbox added 
+- all files are separated accordingly in clean architecture components 
+
    # go enjoy your app!

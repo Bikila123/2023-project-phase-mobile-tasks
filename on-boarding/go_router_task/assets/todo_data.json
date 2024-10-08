@@ -1,0 +1,27 @@
+[
+    {
+      "iconText": "U",
+      "taskDescription": "First I have to animate the logo and later prototyping my design. It's very important",
+      "dateText": "April, 29, 2023",
+      "taskColor": 4283215696,
+      "title": "UI/UX App Design",
+      "isCompleted": false
+    },
+    {
+      "iconText": "V",
+      "taskDescription": "First I have to animate the logo and later prototyping my design. It's very important",
+      "dateText": "April, 29, 2023",
+      "taskColor": 4294957665,
+      "title": "View candidates",
+      "isCompleted": true
+    },
+    {
+      "iconText": "F",
+      "taskDescription": "First I have to animate the logo and later prototyping my design. It's very important",
+      "dateText": "April, 29, 2023",
+      "taskColor": 4294901760,
+      "title": "Football CU Dry-bling",
+      "isCompleted": false
+    }
+  ]
+  

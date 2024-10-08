@@ -1,39 +1,66 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:go_router_task/task_model.dart';
-import 'package:intl/intl.dart';
+import 'package:go_router_task/features/todo_app/domain/entities/task.dart';
+import 'package:go_router_task/features/todo_app/domain/usecases/get_task_by_title_usecase.dart';
+import 'package:go_router_task/features/todo_app/domain/repositories/task_repository.dart';
+import 'package:intl/intl.dart'; // Import repository
 
 class TaskDetail extends StatefulWidget {
-  final Task task;
-  const TaskDetail({required this.task, super.key});
+  final String title;
+  final TaskRepository repository; // Add repository to the constructor
+
+  const TaskDetail({required this.title, required this.repository, super.key});
+
   @override
-  // ignore: no_logic_in_create_state
   State<TaskDetail> createState() => _TaskDetailState();
 }
 
 class _TaskDetailState extends State<TaskDetail> {
+  bool? isCompleted = false;
   final TextEditingController _titleController;
   final TextEditingController _descriptionController;
   final TextEditingController _dueDateController;
 
-  // Constructor to initialize all controllers
+  // Now pass the repository to the use case
+  late final GetTaskByTitleUseCase getTaskByTitleUseCase;
+
   _TaskDetailState()
       : _titleController = TextEditingController(),
         _descriptionController = TextEditingController(),
         _dueDateController = TextEditingController();
 
-//setting up any initial state that depends on the widget's dependencies
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // Set initial values for each controller based on the task data
-    _titleController.text = widget.task.title;
-    _descriptionController.text = widget.task.taskDescription;
-    _dueDateController.text = widget.task.dateText;
+    // Initialize the use case by passing the repository
+    getTaskByTitleUseCase =
+        GetTaskByTitleUseCase(repository: widget.repository);
+
+    // Fetch the task after initializing the use case
+    _fetchTask();
   }
 
-//dispose method to prevent memory leaks
+  Future<void> _fetchTask() async {
+    final result = await getTaskByTitleUseCase.execute(widget.title);
+    setState(() {
+      result.fold(
+        (failure) {
+          // Handle failure
+          if (kDebugMode) {
+            print(failure.message);
+          } // or show a message to the user
+        },
+        (fetchedTask) {
+          _titleController.text = fetchedTask.title;
+          _descriptionController.text = fetchedTask.taskDescription;
+          _dueDateController.text = fetchedTask.dateText;
+          isCompleted = fetchedTask.isCompleted;
+        },
+      );
+    });
+  }
+
   @override
   void dispose() {
     _titleController.dispose();
@@ -42,20 +69,16 @@ class _TaskDetailState extends State<TaskDetail> {
     super.dispose();
   }
 
-  // Method to show the DatePicker and format the selected date
   Future<void> _selectDate(BuildContext context) async {
     DateTime? selectedDate = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(), // Current date as the default
-      firstDate: DateTime(2000), // Earliest date selectable
-      lastDate: DateTime(2100), // Latest date selectable
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
     );
 
     if (selectedDate != null) {
-      // Format the date as "April, 29, 2023"
       String formattedDate = DateFormat('MMMM, d, yyyy').format(selectedDate);
-
-      // Update the text field with the formatted date
       setState(() {
         _dueDateController.text = formattedDate;
       });
@@ -151,19 +174,33 @@ class _TaskDetailState extends State<TaskDetail> {
             suffixIcon: IconButton(
               icon: const Icon(Icons.calendar_today),
               onPressed: () {
-                // Show the date picker when the icon is pressed
                 _selectDate(context);
               },
             ),
           ),
           onTap: () {
-            // Show the DatePicker when the field is tapped
             _selectDate(context);
           },
         ),
-        const SizedBox(
-          height: 20,
+        const SizedBox(height: 20),
+        const Padding(
+          padding: EdgeInsets.all(10.0),
+          child: Text(
+            'Is Completed',
+            style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFFEE6F57)),
+          ),
         ),
+        Checkbox(
+            value: isCompleted,
+            onChanged: (bool? newBool) {
+              setState(() {
+                isCompleted = newBool;
+              });
+            }),
+        const SizedBox(height: 20),
         updateTaskButton()
       ],
     );
@@ -184,16 +221,21 @@ class _TaskDetailState extends State<TaskDetail> {
       children: [
         ElevatedButton(
           onPressed: () {
-            Task task = Task(
-                iconText: _titleController.text[1],
-                taskDescription: _descriptionController.text,
-                dateText: _dueDateController.text,
-                taskColor: Colors.green,
-                title: _titleController.text);
-                if (kDebugMode) {
-                  print(task);
-                }
-              //update code will be here by using the updated data
+            TaskEntity task = TaskEntity(
+              title: _titleController.text,
+              taskDescription: _descriptionController.text,
+              dateText: _dueDateController.text,
+              taskColor: Colors.green,
+              iconText: _titleController.text.isNotEmpty
+                  ? _titleController.text[0]
+                  : '',
+              isCompleted: isCompleted ?? false,
+            );
+
+            if (kDebugMode) {
+              print(task);
+            }
+            // Update code will be here by using the updated data
             context.goNamed('home');
           },
           style: ElevatedButton.styleFrom(
