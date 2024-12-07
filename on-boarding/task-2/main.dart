@@ -21,6 +21,7 @@ void main() {
     print("Enter your choice:");
     opt = int.parse(stdin.readLineSync() ?? '0');
     if (opt == 1) {
+      //new task creation
       print("Please enter the title of the task!");
       String? title = stdin.readLineSync();
       print("Please enter the description of the task!");
@@ -48,10 +49,13 @@ void main() {
       tasks.add(addedtask);
       print("Task added!");
     } else if (opt == 2) {
+      //call method that lists all task
       taskManager?.viewAllTasks(tasks);
     } else if (opt == 3) {
+      //call method that lists all completed tasks
       taskManager?.viewCompletedTasks(tasks);
     } else if (opt == 4) {
+      //call method that list all pending tasks
       taskManager?.viewPendingTasks(tasks);
     } else if (opt == 5) {
       // edit task
